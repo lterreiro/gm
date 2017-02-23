@@ -1,56 +1,27 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package nls.formacao.gm.banco;
+package nls.formacao.gm.banco; //nls.formacao.gm.banco;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 /**
  *
  * @author Formacao
  */
 public class Atm {
-   private String id ;
-   private float saldo ;
-   private Date data ;
 
+    private String id;
+    private float saldo = 100;
+    private Date data;
+
+    //construtor
     public Atm() {
-        
+
     }
 
-    public Atm(Date data) {
-        this.data = data ;
-    }
-         
-   public  float carregar()
-   {
-       return 0.0f ;
-   }
-   
-    public boolean descarregar()
-   {
-        return true ;
-   }
-   
-   public float levantar(int lev , float lev1)
-   {   
-       return  0 ;
-   }
-   
-   public float depositar(int dep1 , float dep2)
-   {
-       return 0;
-   }
-   
-    public boolean transferir(int tra , int tra1 , float tra2)
-   {
-       return false;
-   }
-
+    //getters  -  setters
     public String getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(String id) {
@@ -58,28 +29,57 @@ public class Atm {
     }
 
     public float getSaldo() {
-        return saldo;
+        return this.saldo;
     }
 
     public void setSaldo(float saldo) {
-        
-        {
-          this.saldo = saldo;  
-        }
-        
         this.saldo = saldo;
     }
 
     public Date getData() {
-        return data;
+        Calendar cal = new GregorianCalendar();
+        return cal.getTime();
     }
 
     public void setData(Date data) {
         this.data = data;
     }
-   
-    public static void main(String[] args) {
-        //String cont = new Conta(1, "CC", (float) 5.0,"");
-       
+
+    //metodos do ATM
+    public float carregar() {
+        return 0.0f;
     }
+
+    public boolean descarregar() {
+        return true;
+    }
+
+    public float levantar(int valor, float saldo) {
+        if (this.getSaldo() >= valor) {
+            this.setSaldo(this.getSaldo() - valor);
+            System.out.println("data de movimento : " + this.getData());
+            System.out.println("Efectuou um levantamento no valor de " + valor + " Euros");
+            System.out.println("O seu saldo actual é : " + this.getSaldo());
+        } else {
+            System.out.println("A operação não é permitida !! ");
+            System.out.println("Saldo insuficiente");
+        }
+        return this.getSaldo();
+    }
+
+    public float depositar(int conta, float valor) {
+        if (true) //numconta numero conta existe/ativa
+        {
+            this.setSaldo(this.getSaldo() + valor);
+            System.out.println("Deposito efectuado , o seu saldo actual é : " + this.getSaldo());
+        } else {
+            System.out.println("Esta conta não está válida");
+        }
+        return this.getSaldo();
+    }
+
+    public boolean transferir(int origem, int destino, float valor) {
+        return true;
+    }
+
 }
