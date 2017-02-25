@@ -99,9 +99,9 @@ public class Atm {
         if (!conta.encerrada && val > 0) {
             banco.creditar(num, val);
             System.out.println("Operacao efetuado com sucesso");
-            System.out.println("O Seu novo saldo é de : " + (conta.getSaldo() - val));
+            System.out.println("O Seu novo saldo é de : " + (conta.getSaldo() + val));
         } else {
-            System.out.println("Conta invalida" + (conta.getSaldo() - val));
+            System.out.println("Conta invalida" );
         }
     }
 
