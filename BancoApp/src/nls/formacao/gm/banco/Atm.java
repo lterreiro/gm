@@ -1,4 +1,9 @@
-package nls.formacao.gm.banco; //nls.formacao.gm.banco;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package nls.formacao.gm.banco;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -6,22 +11,28 @@ import java.util.GregorianCalendar;
 
 /**
  *
- * @author Formacao
+ * @author nls/JosePinto
  */
 public class Atm {
 
+    //Atributos 
     private String id;
-    private float saldo = 100;
-    private Date data;
+    private float saldo;
+    // private Date data ;
+    private Conta conta;
+    private Banco banco;
 
-    //construtor
-    public Atm() {
-
+    //Metodos especiais
+    public Atm(String id, float saldo, Conta conta, Banco banco) {
+        this.id = id;
+        this.saldo = saldo;
+        //  this.data = data;
+        this.conta = conta;
+        this.banco = banco;
     }
 
-    //getters  -  setters
     public String getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(String id) {
@@ -29,56 +40,72 @@ public class Atm {
     }
 
     public float getSaldo() {
-        return this.saldo;
+        return saldo;
     }
 
     public void setSaldo(float saldo) {
         this.saldo = saldo;
     }
 
+    /*
     public Date getData() {
-        Calendar cal = new GregorianCalendar();
-        return cal.getTime();
+        return data;
     }
 
     public void setData(Date data) {
         this.data = data;
     }
+     */
+    public Conta getConta() {
+        return conta;
+    }
 
-    //metodos do ATM
-    public float carregar() {
-        return 0.0f;
+    public void setConta(Conta conta) {
+        this.conta = conta;
+    }
+
+    public Banco getBanco() {
+        return banco;
+    }
+
+    public void setBanco(Banco banco) {
+        this.banco = banco;
+    }
+
+    //Metodos publicos
+    public boolean carregar(float val) {
+        return true;
     }
 
     public boolean descarregar() {
         return true;
     }
 
-    public float levantar(int valor, float saldo) {
-        if (this.getSaldo() >= valor) {
-            this.setSaldo(this.getSaldo() - valor);
-            System.out.println("data de movimento : " + this.getData());
-            System.out.println("Efectuou um levantamento no valor de " + valor + " Euros");
-            System.out.println("O seu saldo actual é : " + this.getSaldo());
+    public void levantar(int num, float val) {
+        if (!conta.encerrada) {
+            if (val > conta.getSaldo()) {
+                System.out.println("conta sem saldo ");
+            } else {
+                banco.debitar(num, val);
+                System.out.println("Operacao efetuado com sucesso");
+                System.out.println("O Seu novo saldo é de : " + (conta.getSaldo() - val));
+            }
         } else {
-            System.out.println("A operação não é permitida !! ");
-            System.out.println("Saldo insuficiente");
+            System.out.println("conta encerrada " + conta.getNumero());
         }
-        return this.getSaldo();
     }
 
-    public float depositar(int conta, float valor) {
-        if (true) //numconta numero conta existe/ativa
-        {
-            this.setSaldo(this.getSaldo() + valor);
-            System.out.println("Deposito efectuado , o seu saldo actual é : " + this.getSaldo());
+    public void depositar(int num, float val) {
+        if (!conta.encerrada && val > 0) {
+            banco.creditar(num, val);
+            System.out.println("Operacao efetuado com sucesso");
+            System.out.println("O Seu novo saldo é de : " + (conta.getSaldo() - val));
         } else {
-            System.out.println("Esta conta não está válida");
+            System.out.println("Conta invalida" + (conta.getSaldo() - val));
         }
-        return this.getSaldo();
     }
 
-    public boolean transferir(int origem, int destino, float valor) {
+    public boolean transferir(int contaOrigem, int contaDestino, float val) {
         return true;
     }
 
