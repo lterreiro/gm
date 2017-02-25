@@ -86,9 +86,9 @@ public class Atm {
             if (val > conta.getSaldo()) {
                 System.out.println("conta sem saldo ");
             } else {
-                banco.debitar(num, val);
+                conta.debitar(num, val);
                 System.out.println("Operacao efetuado com sucesso");
-                System.out.println("O Seu novo saldo é de : " + (conta.getSaldo() - val));
+                System.out.println("O Seu novo saldo é de : " + conta.getSaldo());
             }
         } else {
             System.out.println("conta encerrada " + conta.getNumero());
@@ -97,11 +97,11 @@ public class Atm {
 
     public void depositar(int num, float val) {
         if (!conta.encerrada && val > 0) {
-            banco.creditar(num, val);
+            conta.creditar(val);
             System.out.println("Operacao efetuado com sucesso");
-            System.out.println("O Seu novo saldo é de : " + (conta.getSaldo() + val));
+            System.out.println("O Seu novo saldo é de : " + conta.getSaldo());
         } else {
-            System.out.println("Conta invalida" );
+            System.out.println("Conta invalida ou deposito invalido");
         }
     }
 
