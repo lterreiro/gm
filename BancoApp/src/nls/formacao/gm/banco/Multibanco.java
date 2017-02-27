@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author nls.formacao.JosePinto
+ * @author nls.formacao.gm.JosePinto
  */
 public class Multibanco {
 
