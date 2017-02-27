@@ -134,7 +134,7 @@ public class Atm {
             if (this.conta.encerrada) {
                 System.out.println("conta encerrada " + this.conta.getNumero());
             } else {
-                if (this.conta.getSaldo() > val) {
+                if (this.conta.getSaldo() >= val) {
                     this.conta.debitar(val);
                     this.cliente.levantarAtm(this.getId(), num, val);
                     this.setSaldo(this.getSaldo() - val);
