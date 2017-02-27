@@ -26,8 +26,8 @@ public void marcarCombate(Lutador lutador1 , Lutador lutador2) {
         this.setAdversario2(lutador2);
     } else {
         this.setAprovado(false);
-        this.adversario1 = null;
-        this.adversario2 = null;
+        this.setAdversario1 = null;
+        this.setAdversario2 = null;
         System.out.println("Combate nao pode ser marcado");
     }
 }    
