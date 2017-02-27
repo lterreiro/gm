@@ -152,7 +152,8 @@ public class Lutador {
     }
 
     public void status() {
-        System.out.printf("Lutador %s, é um peso %s, com palmarés %d vitórias, %d empates e %d derrotas.\n", getNome(), getCategoria(),getVitorias(),getEmpates(),getDerrotas());
+        System.out.printf("Lutador %s, é um peso %s, com o seguinte palmarés : %d vitórias, %d empates e %d derrotas.\n", 
+                this.getNome(), this.getCategoria(),this.getVitorias(),this.getEmpates(),this.getDerrotas());
     }
 
     public void ganharLuta() {
