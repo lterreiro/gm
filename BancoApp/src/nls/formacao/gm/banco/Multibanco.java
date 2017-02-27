@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author zeca
+ * @author nls.formacao.JosePinto
  */
 public class Multibanco {
 
@@ -91,7 +91,7 @@ public class Multibanco {
             System.out.println("");
 
             opcao = teclado.nextInt();
-            
+            //neste momento a como cada cliente so tem uma conta e é igual ao numero de cliente....esta entra sempre por default
             switch (opcao) {
                 case 1:
                     numconta = numcli;     //teclado.nextInt();
